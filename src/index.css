@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+
+    --card: 210 20% 98%;
+    --card-foreground: 0 0% 7%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 14% 95%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 210 14% 95%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 211 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 14% 90%;
+    --input: 210 14% 90%;
+    --ring: 211 100% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 30%;
+    --sidebar-primary: 211 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 14% 95%;
+    --sidebar-accent-foreground: 0 0% 7%;
+    --sidebar-border: 210 14% 90%;
+    --sidebar-ring: 211 100% 50%;
+  }
+}
+
+.input {
+  @apply w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition;
+}
+
+/* Remove default calendar UI mess */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Fix text alignment */
+input[type="date"] {
+  position: relative;
+}
+
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-border/60 rounded-2xl;
+    box-shadow: 0 8px 32px hsla(211, 100%, 50%, 0.06), 0 1px 3px hsla(0, 0%, 0%, 0.04);
+  }
+
+  .glass-card-subtle {
+    @apply bg-white/50 backdrop-blur-lg border border-border/40 rounded-2xl;
+  }
+
+  .glass-card-dark {
+    @apply bg-foreground/95 backdrop-blur-xl border border-white/10 rounded-2xl text-white;
+  }
+
+  .glow-border {
+    @apply border border-primary/20;
+    box-shadow: 0 0 20px hsla(211, 100%, 50%, 0.1);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(211, 100%, 50%), hsl(200, 100%, 60%));
+  }
+
+  .gradient-text-dark {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(0, 0%, 7%), hsl(0, 0%, 30%));
+  }
+
+  .btn-primary {
+    @apply bg-foreground text-background font-semibold rounded-full px-8 py-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .btn-primary-blue {
+    @apply bg-primary text-primary-foreground font-semibold rounded-full px-8 py-4 transition-all duration-300;
+    box-shadow: 0 4px 20px hsla(211, 100%, 50%, 0.3);
+  }
+
+  .btn-primary-blue:hover {
+    box-shadow: 0 8px 30px hsla(211, 100%, 50%, 0.45);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    @apply border-2 border-foreground/15 text-foreground font-semibold rounded-full px-8 py-4 transition-all duration-300 bg-transparent hover:border-foreground/30 hover:bg-foreground/5;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-32;
+  }
+
+  .heading-xl {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08];
+  }
+
+  .heading-lg {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.12];
+  }
+
+  .heading-md {
+    @apply text-2xl sm:text-3xl font-semibold tracking-tight;
+  }
+
+  .body-lg {
+    @apply text-lg sm:text-xl text-muted-foreground leading-relaxed;
+  }
+
+  .label-tag {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase border;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 96%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 80%);
+  border-radius: 3px;
+}
