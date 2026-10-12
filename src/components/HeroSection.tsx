@@ -1,8 +1,16 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
-import heroVideo from "@/assets/hero.mp4";
+import { ArrowRight, Compass } from "lucide-react";
+import heroVideo from "@/assets/hero-old.mp4";
+import heroPoster from "@/assets/hero-drone.jpg";
+import type { ReactNode } from "react";
 
-const HeroSection = ({ title, subtitle, video = heroVideo }) => {
+interface HeroSectionProps {
+  title?: ReactNode;
+  subtitle?: ReactNode;
+  video?: string;
+}
+
+const HeroSection = ({ title, subtitle, video = heroVideo }: HeroSectionProps) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
 
@@ -14,19 +22,21 @@ const HeroSection = ({ title, subtitle, video = heroVideo }) => {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          poster={heroPoster}
+          aria-hidden="true"
           className="w-full h-full object-cover"
         />
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 " />
+        <div className="absolute inset-0 bg-slate-950/30" />
 
         {/* Smooth gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/1 to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-5xl px-4 sm:px-6 lg:px-8 pt-10">
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -34,8 +44,8 @@ const HeroSection = ({ title, subtitle, video = heroVideo }) => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-flex items-center gap-2 text-white border border-white px-4 py-1 rounded-full text-sm mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#007BE7] animate-pulse" />
-            DGCA Certified · Pan India
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse" />
+            DGCA-licensed pilots · Hyderabad · Telangana · Andhra Pradesh
           </span>
         </motion.div>
 
@@ -45,9 +55,9 @@ const HeroSection = ({ title, subtitle, video = heroVideo }) => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
         >
-          {title || <>Professional Drone Services in{" "}
-          <span className="text-[#007BE7]">
-            Chennai & Bangalore
+          {title || <>Aerial drone services for{" "}
+          <span className="text-[#0284C7]">
+            projects that move you forward.
           </span></>}
         </motion.h1>
 
@@ -57,32 +67,30 @@ const HeroSection = ({ title, subtitle, video = heroVideo }) => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-white text-base sm:text-lg max-w-2xl mx-auto mb-10"
         >
-          {subtitle || <>Cinematic Aerial Photography, Live Drone Streaming & Advanced Survey Solutions
-
-          Certified Drone Pilots | Latest DJI Technology | Affordable Packages</>}
+          {subtitle || <>Construction progress monitoring, thermal and visual solar inspections, drone surveys, real estate aerials and cinematic event coverage. Based in Hyderabad, serving projects across Telangana and Andhra Pradesh with flight planning shaped around each site and applicable approvals.</>}
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4"
         >
           <a
-            href="https://www.skywheelzs.in/contact-us"
-            className="bg-[#007BE7] hover:bg-blue-600 text-white px-6 py-3 rounded-lg inline-flex items-center gap-2 transition"
+            href="/contact-us"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0284C7] px-6 py-3 font-semibold text-white transition hover:bg-blue-600"
           >
-            Get Instant Quote
+            Plan Your Mission
             <ArrowRight size={18} />
           </a>
 
-          {/* <a
-            href="#works"
-            className="border border-white/30 text-white px-6 py-3 rounded-lg inline-flex items-center gap-2 hover:bg-white/10 transition"
+          <a
+            href="/services"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/50 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:border-white hover:bg-white/10"
           >
-            <Play size={18} />
-            View Our Work
-          </a> */}
+            <Compass size={18} />
+            Explore drone services
+          </a>
         </motion.div>
 
       </div>

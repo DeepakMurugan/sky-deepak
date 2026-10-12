@@ -1,29 +1,25 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import {
-  Send,
+  ArrowRight,
   CalendarDays,
   Clock,
   MessageCircle,
   Zap,
 } from "lucide-react";
 import { toast } from "sonner";
-import emailjs from "emailjs-com";
 
 const services = [
-  "Aerial Event Photography/Videography",
-  "HDMI Live Streaming from Drone",
-  "Property / Real Estate Shoot",
-    "Construction Monitoring",
-  "Industrial Inspection",
-  "Real Estate Aerial",
-  "Wedding Shoot",
-  "Event Coverage",
-  "Live Streaming",
-  "Outdoor Promotional Shoot",
-    "Drone Survey & Mapping",
-  "Construction Monitoring",
- 
+  "Professional Drone Survey",
+  "Solar Panel Drone Inspection",
+  "Wedding & Aerial Event Photography",
+  "Real Estate Drone Service",
+  "Power Utility Pole & Line Inspection",
+  "Construction Progress Monitoring",
+  "Live Streaming Drone Service",
+  "Telugu Folk Song Drone Cinematography",
+  "Luxury Drone Services",
+  "Commercial Drone Approvals",
   "Other",
 ];
 
@@ -39,7 +35,7 @@ const LeadFormSection = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (
@@ -54,46 +50,21 @@ const LeadFormSection = () => {
     }
 
     setLoading(true);
-
-    emailjs
-      .send(
-        "service_tq0n95q",
-        "template_8fv0uuc",
-        form,
-        "JX17EV2EsaeLH8Stb"
-      )
-      .then(() => {
-        toast.success("✅ Booking request sent! We’ll contact you soon.");
-
-        setForm({
-          name: "",
-          email: "",
-          phone: "",
-          service: "",
-          date: "",
-          message: "",
-        });
-
-        setLoading(false);
-
-        // 🔥 WhatsApp redirect (increase conversion)
-        // window.open(
-        //   `https://wa.me/919360744915?text=Hi, I just submitted a drone booking request`,
-        //   "_blank"
-        // );
-      })
-      .catch(() => {
-        toast.error("❌ Failed to send. Try again.");
-        setLoading(false);
-      });
+    const subject = encodeURIComponent(`SkyDigiLens enquiry: ${form.service}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nService: ${form.service}\nPreferred date: ${form.date}\n\nProject details:\n${form.message || "Not provided"}`
+    );
+    window.location.href = `mailto:hello@skydigilens.in?subject=${subject}&body=${body}`;
+    toast.info("Your email app will open with the enquiry ready to send.");
+    setLoading(false);
   };
 
   return (
     <section
       id="contact"
-      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-background to-secondary/20"
+      className="relative overflow-hidden bg-slate-50 py-16 sm:py-20 lg:py-24"
     >
-      <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
 
         {/* LEFT CONTENT */}
         <motion.div
@@ -101,36 +72,40 @@ const LeadFormSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <span className="label-tag border-primary/30 text-primary bg-primary/5 mb-4 inline-block">
-            Reach Out To Us
+          <span className="label-tag mb-4 inline-flex border-sky-200 bg-white text-sky-700">
+            Project enquiry
           </span>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 leading-tight">
-            Book Your Drone <br /> Service Now 
+          <h2 className="mb-4 text-3xl font-bold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
+            Take your project <span className="text-sky-600">into view.</span>
           </h2>
 
-          <p className="text-muted-foreground mb-6 text-sm sm:text-base max-w-md">
-            Get professional drone services in Chennai, Bangalore & All over India.
-            Fast response, certified pilots, and cinematic results.
+          <p className="mb-7 max-w-md text-sm leading-7 text-slate-600 sm:text-base">
+            Tell us about your project in Hyderabad, Telangana or Andhra Pradesh. We’ll help plan the right crew, equipment and compliance steps.
           </p>
 
           <div className="space-y-4 mb-6">
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Clock className="w-4 h-4 text-primary" />
-              Response within 30 minutes
+            <div className="flex items-center gap-3 text-sm text-slate-600">
+              <Clock className="h-4 w-4 text-sky-600" />
+              Project-specific crew and flight planning
             </div>
 
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <MessageCircle className="w-4 h-4 text-primary" />
-              Free consultation available
+            <div className="flex items-center gap-3 text-sm text-slate-600">
+              <MessageCircle className="h-4 w-4 text-sky-600" />
+              Approval requirements reviewed before flight
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200 text-sm">
-            <Zap className="w-4 h-4 text-amber-600" />
-            <span className="text-amber-700 font-medium">
-              Limited slots available this week
-            </span>
+          <div className="mt-8 rounded-2xl border border-sky-100 bg-white p-5 shadow-sm">
+            <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-900">
+              <Zap className="h-4 w-4 text-sky-600" />
+              Better planning starts with location
+            </div>
+            <p className="text-sm leading-6 text-slate-600">
+              Hyderabad airspace restrictions can require prior Digital Sky
+              permissions or NOCs. Include your site location and we’ll help
+              identify the approval steps to check.
+            </p>
           </div>
         </motion.div>
 
@@ -140,13 +115,15 @@ const LeadFormSection = () => {
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="bg-white/70 backdrop-blur-2xl border border-border/40 rounded-3xl p-6 sm:p-8 shadow-xl space-y-5"
+          className="space-y-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-8 lg:p-9"
         >
           {/* NAME + EMAIL */}
           <div className="grid sm:grid-cols-2 gap-4">
             <input
               type="text"
-              placeholder="Enter Your Name *"
+              placeholder="Your name *"
+              aria-label="Your name"
+              required
               value={form.name}
               onChange={(e) =>
                 setForm({ ...form, name: e.target.value })
@@ -156,7 +133,9 @@ const LeadFormSection = () => {
 
             <input
               type="email"
-              placeholder="Enter Your Email *"
+              placeholder="Email address *"
+              aria-label="Email address"
+              required
               value={form.email}
               onChange={(e) =>
                 setForm({ ...form, email: e.target.value })
@@ -168,7 +147,9 @@ const LeadFormSection = () => {
           {/* PHONE */}
           <input
             type="tel"
-            placeholder="Mobile Number *"
+            placeholder="Phone number *"
+            aria-label="Phone number"
+            required
             value={form.phone}
             onChange={(e) =>
               setForm({ ...form, phone: e.target.value })
@@ -187,6 +168,7 @@ const LeadFormSection = () => {
                 setForm({ ...form, service: e.target.value })
               }
               className="input"
+              required
             >
               <option value="">Choose Service</option>
               {services.map((s) => (
@@ -209,6 +191,8 @@ const LeadFormSection = () => {
     <input
       type="date"
       value={form.date}
+      aria-label="Preferred project date"
+      required
       onChange={(e) =>
         setForm({ ...form, date: e.target.value })
       }
@@ -219,7 +203,7 @@ const LeadFormSection = () => {
 
           {/* MESSAGE */}
           <textarea
-            placeholder="Message / Project Details (optional)"
+            placeholder="Project location, scope and any other details (optional)"
             rows={4}
             value={form.message}
             onChange={(e) =>
@@ -232,14 +216,14 @@ const LeadFormSection = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition"
+            className="group flex w-full items-center justify-center gap-2 rounded-xl bg-slate-950 py-3.5 font-semibold text-white transition hover:bg-sky-700"
           >
-            <Send size={16} />
-            {loading ? "Sending..." : "Contact Us"}
+            <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
+            {loading ? "Preparing enquiry..." : "Prepare Email Enquiry"}
           </button>
 
-          <p className="text-xs text-center text-muted-foreground">
-            🔒 Your data is safe. No spam. No unnecessary calls.
+          <p className="text-center text-xs leading-5 text-slate-500">
+            Your email app will open so you can review and send your enquiry to hello@skydigilens.in.
           </p>
         </motion.form>
       </div>

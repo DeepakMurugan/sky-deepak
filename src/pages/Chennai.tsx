@@ -1,8 +1,123 @@
 import LocationPage from "@/components/LocationPage";
 import { Clock, Shield, Star, MapPin } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useEffect } from "react";
 
 const ChennaiPage = () => {
+  useEffect(() => {
+    // Add Canonical Tag
+    const canonicalLink = document.createElement('link');
+    canonicalLink.rel = 'canonical';
+    canonicalLink.href = 'https://skywheelzs.in/aerial-drone-services-in-chennai';
+    document.head.appendChild(canonicalLink);
+
+    // Service Schema
+    const serviceSchema = document.createElement("script");
+    serviceSchema.type = "application/ld+json";
+    serviceSchema.id = "chennai-service-schema";
+    serviceSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Drone Photography & Videography Services in Chennai",
+      "description": "Professional aerial photography, 4K videography, and drone inspection services in Chennai. DGCA-certified pilots. Coverage includes ECR beach weddings, OMR corporate shoots, real estate properties, and industrial inspections.",
+      "provider": {
+        "@id": "https://skywheelzs.in/#business"
+      },
+      "areaServed": ["Chennai", "ECR", "OMR", "Anna Nagar", "Nungambakkam", "T. Nagar", "Adyar", "Velachery", "Perambur", "Tambaram", "Chengalpattu"],
+      "serviceType": [
+        "Aerial Photography",
+        "Wedding Drone Videography",
+        "Real Estate Drone Shoots",
+        "Industrial Inspection",
+        "Drone Mapping & Survey",
+        "Corporate Event Coverage"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "8000",
+        "priceCurrency": "INR",
+        "description": "Starting price for professional drone services in Chennai"
+      }
+    });
+    document.head.appendChild(serviceSchema);
+
+    // FAQ Schema
+    const faqSchema = document.createElement("script");
+    faqSchema.type = "application/ld+json";
+    faqSchema.id = "chennai-faq-schema";
+    faqSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the cost of aerial drone photography in Chennai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Professional aerial photography services in Chennai start from ₹8,000 for basic shoots. Premium cinematic packages with editing and color grading begin at ₹15,000+. We offer customized quotes based on your specific project requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly can you provide drone video services near me in Chennai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We provide same-day booking for most drone services across Chennai. For complex shoots requiring DGCA permissions, delivery is typically within 24-48 hours. Express editing available for urgent timelines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer wedding drone photography services in Chennai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Our aerial videography experts specialize in destination wedding coverage across Chennai, including ECR beach weddings, luxury resort events, and traditional ceremonies with cinematic drone footage and same-day edits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are your drone pilots DGCA certified for Chennai operations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All our aerial photography pilots are DGCA-certified with valid Remote Pilot Certificates. We maintain full compliance with Indian aviation regulations and coordinate with local authorities for safe drone operations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which areas in Chennai do you service for drone photography?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We provide professional aerial photography across all of Chennai including ECR, OMR, Anna Nagar, Nungambakkam, T. Nagar, Adyar, Velachery, Perambur, Tambaram, and surrounding locations with rapid response times."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long to receive edited aerial footage from drone shoots?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard editing and delivery: 24 hours. Cinematic color grading and advanced editing: 48-72 hours. Rush/same-day delivery available for urgent projects. Complex productions with special effects: 5-7 business days."
+          }
+        }
+      ]
+    });
+    document.head.appendChild(faqSchema);
+
+    return () => {
+      const serviceScript = document.getElementById("chennai-service-schema");
+      if (serviceScript?.parentNode) {
+        serviceScript.parentNode.removeChild(serviceScript);
+      }
+      const faqScript = document.getElementById("chennai-faq-schema");
+      if (faqScript?.parentNode) {
+        faqScript.parentNode.removeChild(faqScript);
+      }
+      // Clean up canonical link
+      const canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink?.parentNode) {
+        canonicalLink.parentNode.removeChild(canonicalLink);
+      }
+    };
+  }, []);
+
   const areas = [
     { name: "ECR (East Coast Road)", desc: "Beach weddings and resort photography services" },
     { name: "OMR (Old Mahabalipuram Road)", desc: "IT corridor and professional corporate shoots" },
@@ -113,7 +228,7 @@ const ChennaiPage = () => {
     <LocationPage
       city="Chennai"
       heroTitle={<>Aerial Drone Services in{" "}
-        <span className="text-[#007BE7]">
+        <span className="text-[#0284C7]">
           Chennai
         </span></>}
       heroSubtitle="Professional aerial photography, videography, and drone survey services for weddings, real estate, and commercial projects across Chennai, ECR, OMR & Anna Nagar"

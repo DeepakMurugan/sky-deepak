@@ -1,8 +1,25 @@
 import LocationPage from "@/components/LocationPage";
 import { Clock, Shield, Star, MapPin } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useEffect } from "react";
 
 const Chennaidrone = () => {
+  useEffect(() => {
+    // Add Canonical Tag
+    const canonicalLink = document.createElement('link');
+    canonicalLink.rel = 'canonical';
+    canonicalLink.href = 'https://skywheelzs.in/drone-services-in-chennai-india';
+    document.head.appendChild(canonicalLink);
+
+    return () => {
+      // Clean up canonical link
+      const canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink?.parentNode) {
+        canonicalLink.parentNode.removeChild(canonicalLink);
+      }
+    };
+  }, []);
+
   const areas = [
     { name: "ECR (East Coast Road)", desc: "Beach weddings and resort photography services" },
     { name: "OMR (Old Mahabalipuram Road)", desc: "IT corridor and professional corporate shoots" },
@@ -113,14 +130,14 @@ const Chennaidrone = () => {
     <LocationPage
       city="Chennai"
       heroTitle={<> Professional Drone Services in{" "}
-        <span className="text-[#007BE7]">
+        <span className="text-[#0284C7]">
           Chennai
         </span></>}
       heroSubtitle="Professional drone photography, videography, and drone survey services for weddings, real estate, and commercial projects across Chennai, ECR, OMR & Anna Nagar"
       areas={areas}
       highlights={highlights}
       faqData={faqData}
-      metaTitle="Professional Drone Services in Chennai | SkyWheelzs "
+      metaTitle="Professional Drone Services in Chennai | Aerial Inspection | SkyWheelzs "
       metaDesc="Looking for drone services near you in Chennai? Skywheelzs offers professional drone photography, videography and more From ₹8,000 onwards."
       structuredData={structuredData}
       extraSection={extraSection}

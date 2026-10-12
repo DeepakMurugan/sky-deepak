@@ -6,19 +6,29 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const FaqSection = ({ faqData }) => {
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface FaqSectionProps {
+  faqData?: FaqItem[];
+}
+
+const FaqSection = ({ faqData }: FaqSectionProps) => {
   const faqs = faqData || [
-    { q: "What areas do you cover for drone services?", a: "We provide professional drone services across Chennai, Bangalore, and Pan India. Our team is based in both cities with dedicated pilots for quick deployment." },
-    { q: "Are your drone operations DGCA certified?", a: "Yes, all our operations are fully DGCA certified. Our pilots hold valid Remote Pilot Certificates and we comply with all Indian aviation regulations for commercial drone flights." },
-    { q: "What types of drones do you use?", a: "We use enterprise-grade DJI equipment including Matrice 300 RTK, Phantom 4 RTK, and Mavic 3 Enterprise series — equipped with thermal, LiDAR, and high-resolution cameras." },
-    { q: "How much do drone services cost in Chennai and Bangalore?", a: "Pricing varies based on project scope, area coverage, and deliverables required. Contact us for a free, no-obligation custom quote tailored to your specific requirements." },
-    { q: "What is the turnaround time for drone survey data?", a: "Standard projects are delivered within 48 hours. Rush delivery is available for time-sensitive projects. Complex 3D modeling and GIS projects may take 3-5 business days." },
-    { q: "Do you provide drone services for weddings and events?", a: "Absolutely! We offer cinematic aerial photography and videography for weddings, corporate events, festivals, and live streaming across Chennai and Bangalore." },
-    { q: "Can you fly drones near airports or restricted areas?", a: "We handle all necessary permissions and clearances. For flights in controlled airspace, we coordinate with AAI and obtain required NOCs well in advance." },
+    { q: "Which areas do you serve?", a: "SkyDigiLens serves Hyderabad, Warangal, Nizamabad and projects across Telangana and Andhra Pradesh, including Vijayawada. Contact us with your site location to discuss availability." },
+    { q: "Are your drone pilots licensed?", a: "We provide DGCA-licensed and certified pilots for commercial drone operations. Flight plans and operations are subject to applicable regulations, airspace conditions and required approvals." },
+    { q: "What equipment do you use?", a: "Our listed equipment includes DJI Matrice 4E, DJI Mavic 4 Pro, DJI Air 3S, DJI Avata 360, custom FPV drones with GoPros and a Sony FX3A camera." },
+    { q: "Can you help with commercial drone approvals in Hyderabad?", a: "Yes. We help assess the site, identify applicable Digital Sky permissions and NOC documentation, and coordinate compliance steps. Flights proceed only when required approvals are in place." },
+    { q: "Do you inspect solar panels?", a: "We provide thermal and visual drone inspections for solar installations across Telangana and Andhra Pradesh. Scope and deliverables are planned to suit the site and inspection brief." },
+    { q: "Can you monitor construction progress?", a: "Yes. We provide repeatable aerial progress documentation for residential towers and construction projects, with capture schedules agreed in advance." },
+    { q: "Do you cover weddings, live streaming and Telugu folk songs?", a: "Yes. Aerial event photography, wedding coverage, live streaming and cinematic drone services for Telugu folk-song productions are available, subject to site permissions and flight conditions." },
+    { q: "How do you quote a project?", a: "Pricing depends on location, duration, flight permissions, crew and deliverables. Send us your project details and preferred date for a tailored quote." },
   ];
   return (
-    <section id="faq" className="section-padding relative bg-secondary/20">
-      <div className="max-w-3xl mx-auto">
+    <section id="faq" className="section-padding relative bg-secondary/20 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,9 +50,9 @@ const FaqSection = ({ faqData }) => {
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
-                className="bg-background rounded-2xl px-6 border border-border/50 shadow-sm"
+                className="bg-background rounded-2xl px-4 border border-border/50 shadow-sm sm:px-6"
               >
-                <AccordionTrigger className="text-left font-heading font-medium text-foreground hover:text-primary hover:no-underline py-5 text-[15px]">
+                <AccordionTrigger className="py-4 text-left font-heading font-medium text-foreground hover:text-primary hover:no-underline text-sm sm:py-5 sm:text-[15px]">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-5">

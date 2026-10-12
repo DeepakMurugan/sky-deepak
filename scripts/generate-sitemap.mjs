@@ -1,18 +1,16 @@
 import fs from "fs/promises";
 import path from "path";
 
-const baseUrl = "https://skywheelzs.in";
+const baseUrl = "https://skydigilens.in";
 const routes = [
   "/",
   "/about-us",
   "/services",
   "/contact-us",
-  "/drone-services-in-chennai-india",
-  "/aerial-drone-services-in-chennai",
-  "/drone-services-in-bangalore-skywheelzs",
-  "/wedding-drone-services-in-kerala",
-  "/beach-wedding-drone-services-andaman",
-  "/luxury-drone-services-delhi-ncr"
+  "/live-streaming-drone-service",
+  "/real-estate-drone-service",
+  "/solar-panel-drone-inspection",
+  "/drone-construction-monitoring"
 ];
 
 const lastmod = new Date().toISOString();

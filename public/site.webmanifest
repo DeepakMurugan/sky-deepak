@@ -1,19 +1,19 @@
 {
-  "name": "Skywheelzs",
-  "short_name": "Skywheelzs",
-  "description": "DGCA certified drone services in Chennai, Bangalore and Tamil Nadu — aerial photography, videography, survey, inspection and live streaming.",
+  "name": "SkyDigiLens",
+  "short_name": "SkyDigiLens",
+  "description": "Professional drone services for aerial surveys, inspections, construction monitoring and cinematography across Telangana and Andhra Pradesh.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0e1a",
-  "theme_color": "#0a0e1a",
+  "background_color": "#071b3e",
+  "theme_color": "#071b3e",
   "icons": [
     {
-      "src": "/favi.png",
-      "sizes": "192x192",
+      "src": "/skydigilens-favicon.png",
+      "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/favi.png",
+      "src": "/skydigilens-favicon.png",
       "sizes": "512x512",
       "type": "image/png"
     }

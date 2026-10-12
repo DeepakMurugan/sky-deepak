@@ -1,44 +1,83 @@
 import LocationPage from "@/components/LocationPage";
-import { Heart, Shield, Camera, MapPin } from "lucide-react";
+import { Camera, Shield, MapPin } from "lucide-react";
 
 const KeralaPage = () => {
   const areas = [
-    { name: "Alleppey", desc: "Backwater wedding destinations" },
-    { name: "Kochi", desc: "Urban weddings and events" },
-    { name: "Munnar", desc: "Hill station wedding photography" },
-    { name: "Kovalam", desc: "Beach wedding locations" },
-    { name: "Thekkady", desc: "Wildlife and resort photography" },
-    { name: "Varkala", desc: "Cliff and beach weddings" },
+    { name: "Kochi", desc: "Commercial drone services and aerial photography" },
+    { name: "Alleppey", desc: "Backwater aerial photography and videography" },
+    { name: "Munnar", desc: "Resort, tourism, and landscape drone shoots" },
+    { name: "Kovalam", desc: "Beach events and coastal drone coverage" },
+    { name: "Thekkady", desc: "Resort and nature aerial filming" },
+    { name: "Varkala", desc: "Cliffside and coastal photography" },
+    { name: "Trivandrum", desc: "Corporate, government, and infrastructure projects" },
+    { name: "Calicut", desc: "Industrial inspections and drone surveys" },
   ];
 
   const highlights = [
-    { icon: Heart, title: "Wedding Specialists", desc: "Expertise in destination weddings" },
-    { icon: Camera, title: "Cinematic Quality", desc: "Hollywood-style aerial cinematography" },
-    { icon: Shield, title: "DGCA Certified", desc: "Licensed for Kerala operations" },
+    {
+      icon: Camera,
+      title: "4K Aerial Photography & Videography",
+      desc: "High-quality drone imaging for commercial and personal projects",
+    },
+    {
+      icon: Shield,
+      title: "DGCA Certified Pilots",
+      desc: "Safe, legal, and professional drone operations across Kerala",
+    },
+    {
+      icon: MapPin,
+      title: "Statewide Coverage",
+      desc: "Serving major cities, tourist destinations, and remote locations",
+    },
   ];
 
   const faqData = [
-    { q: "Do you specialize in wedding drone photography in Kerala?", a: "Yes! We're experts in Kerala wedding drone services, covering backwater, beach, and hill station destinations." },
-    { q: "What is the cost of drone services for Kerala weddings?", a: "Wedding packages start from ₹15,000 for basic coverage. Premium destination wedding packages start from ₹25,000+." },
-    { q: "Can you fly drones over backwaters in Kerala?", a: "Yes, we have extensive experience with backwater wedding drone photography in Alleppey and surrounding areas." },
-    { q: "How far in advance should I book for a Kerala wedding?", a: "We recommend booking 2-3 months in advance for peak season. Last-minute bookings are available based on availability." },
-    { q: "Do you provide drone services in Munnar?", a: "Absolutely! We cover Munnar and other hill stations for destination wedding photography and resort shoots." },
-    { q: "Are your drones suitable for Kerala weather?", a: "Yes, our enterprise-grade drones are weather-resistant and suitable for Kerala's tropical climate." },
+    {
+      q: "What drone services do you offer in Kerala?",
+      a: "We provide aerial photography, videography, real estate shoots, construction monitoring, drone inspections, surveys, mapping, event coverage, and wedding drone services across Kerala.",
+    },
+    {
+      q: "Do you provide drone services in Kochi and Trivandrum?",
+      a: "Yes, we serve Kochi, Trivandrum, Calicut, Munnar, Alleppey, Varkala, Kovalam, and all major locations across Kerala.",
+    },
+    {
+      q: "Are your drone operators DGCA certified?",
+      a: "Yes, all our drone operations are conducted by trained and DGCA-certified professionals following government regulations.",
+    },
+    {
+      q: "Can drones be used for construction monitoring in Kerala?",
+      a: "Absolutely. We provide regular construction progress monitoring, site inspections, and aerial documentation for builders and developers.",
+    },
+    {
+      q: "Do you offer drone surveys and mapping services?",
+      a: "Yes, we provide drone mapping, land surveys, orthomosaic mapping, and aerial inspection services for various industries.",
+    },
+    {
+      q: "How much do drone services cost in Kerala?",
+      a: "Pricing depends on project requirements, location, duration, and deliverables. Contact us for a customized quote.",
+    },
   ];
 
   return (
     <LocationPage
       city="Kerala"
-      heroTitle={<>Wedding Drone Services in{" "}
-        <span className="text-[#007BE7]">
-          Kerala
-        </span></>}
-      heroSubtitle="Cinematic aerial photography for destination weddings, backwater ceremonies, and resort events across God's Own Country."
+      heroTitle={
+        <>
+          Aerial Drone Services in{" "}
+          <span className="text-[#0284C7]">Kerala</span>
+        </>
+      }
+      heroSubtitle="Professional drone photography, videography, real estate marketing, construction monitoring, inspections, surveys, mapping, and event coverage across Kerala."
+
       areas={areas}
       highlights={highlights}
       faqData={faqData}
-      metaTitle="Wedding Drone Services Kerala | Alleppey Backwater & Munnar Hill Station Weddings | SkyWheelzs"
-      metaDesc="Wedding drone photography Kerala | Alleppey backwater, Munnar & Kochi ceremonies. Cinematic 4K aerial videography, DGCA certified, destination specialists. From ₹15,000"
+
+      metaTitle="Aerial Drone Wedding Photography Kerala | SkyWheelzs"
+
+      metaDesc="DGCA-certified drone wedding photography in Kerala with stunning aerial venue shots, couple portraits, and cinematic coverage."
+
+      // canonicalUrl="https://skywheelzs.in/drone-services-in-kerala"
     />
   );
 };

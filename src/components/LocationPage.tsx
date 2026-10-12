@@ -34,6 +34,18 @@ const LocationPage = ({
     if (metaDescTag) {
       metaDescTag.setAttribute('content', metaDesc);
     }
+
+    const metaKeywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement | null;
+    const locationKeywords = `drone services in ${city.toLowerCase()}, ${city} drone photography, ${city} drone videography, ${city} drone inspection, DGCA certified drone services, skywheelzs`;
+    if (metaKeywords) {
+      metaKeywords.content = locationKeywords;
+    } else {
+      const keywordsTag = document.createElement('meta');
+      keywordsTag.name = 'keywords';
+      keywordsTag.content = locationKeywords;
+      document.head.appendChild(keywordsTag);
+    }
+
     window.scrollTo(0, 0);
 
     const scripts = (structuredData || []).map((data, index) => {
